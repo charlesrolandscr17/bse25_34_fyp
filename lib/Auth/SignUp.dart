@@ -17,6 +17,8 @@ class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
   final _namesController = TextEditingController();
   final _passwordController = TextEditingController();
+  String? _password;
+  String? _confirmPassword;
   bool _isPasswordVisible = false;
 
   @override
@@ -25,6 +27,14 @@ class _SignUpState extends State<SignUp> {
     _namesController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  String? _validateNames(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Names cannot be empty';
+    }
+
+    return null;
   }
 
   String? _validateEmail(String? value) {
@@ -38,12 +48,15 @@ class _SignUpState extends State<SignUp> {
     return null;
   }
 
-  String? _validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
+  String? _validatePassword(String? password, String? confirmPassword) {
+    if (password == null || password.isEmpty) {
       return 'Password cannot be empty';
     }
-    if (value.length < 6) {
+    if (password.length < 6) {
       return 'Password must be at least 6 characters';
+    }
+    if (confirmPassword != null && password != confirmPassword) {
+      return 'Passwords do not match';
     }
     return null;
   }
@@ -53,15 +66,14 @@ class _SignUpState extends State<SignUp> {
         _registrationKey.currentState!.validate()) {
       // Form is valid, show a SnackBar
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Form is valid!')),
+        const SnackBar(
+            content: Text('Check your registered email for your OTP')),
       );
 
       // Delay navigation to ensure SnackBar is shown
       Future.delayed(const Duration(seconds: 1), () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const DashBoard()),
-        );
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const OTP_Verification()));
       });
     } else {
       // Form is invalid, show an error message
@@ -69,12 +81,6 @@ class _SignUpState extends State<SignUp> {
         const SnackBar(content: Text('Please check your  email or password')),
       );
     }
-  }
-
-  // This function is triggered when the button is clicked
-  void _doSomething() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const OTP_Verification()));
   }
 
   @override
@@ -144,17 +150,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                     ),
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your email address';
-                      }
-                      // Check if the entered email has the right format
-                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        return 'Please enter a valid email address';
-                      }
-                      // Return null if the entered email is valid
-                      return null;
-                    },
+                    validator: _validateNames,
                   ),
                   const SizedBox(
                     height: 20,
@@ -190,23 +186,13 @@ class _SignUpState extends State<SignUp> {
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                     ),
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your email address';
-                      }
-                      // Check if the entered email has the right format
-                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        return 'Please enter a valid email address';
-                      }
-                      // Return null if the entered email is valid
-                      return null;
-                    },
+                    validator: _validateEmail,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
-                    obscureText: _isPasswordVisible,
+                    obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       labelText: "Password",
                       labelStyle: const TextStyle(color: AppColors.grey),
@@ -249,23 +235,15 @@ class _SignUpState extends State<SignUp> {
                         },
                       ),
                     ),
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your email address';
-                      }
-                      // Check if the entered email has the right format
-                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        return 'Please enter a valid email address';
-                      }
-                      // Return null if the entered email is valid
-                      return null;
-                    },
+                    onChanged: (value) => _password = value,
+                    validator: (value) =>
+                        _validatePassword(value, _confirmPassword),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
-                    obscureText: _isPasswordVisible,
+                    obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       labelText: "Confirm Password",
                       labelStyle: const TextStyle(color: AppColors.grey),
@@ -308,17 +286,8 @@ class _SignUpState extends State<SignUp> {
                         },
                       ),
                     ),
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your email address';
-                      }
-                      // Check if the entered email has the right format
-                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        return 'Please enter a valid email address';
-                      }
-                      // Return null if the entered email is valid
-                      return null;
-                    },
+                    onChanged: (value) => _confirmPassword = value,
+                    validator: (value) => _validatePassword(value, _password),
                   ),
                   Row(
                     children: [
@@ -343,7 +312,7 @@ class _SignUpState extends State<SignUp> {
                     width: 500,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: agree ? _doSomething : null,
+                      onPressed: agree ? _submitForm : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.deeppurple,
                       ),
