@@ -35,13 +35,13 @@ class OnBoardingScreen extends StatelessWidget {
         done: const Text(
           'Done',
           style: TextStyle(
-              fontWeight: FontWeight.w500, color: AppColors.deeppurple),
+              fontWeight: FontWeight.w500, color: AppColors.primary),
         ),
         onDone: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => const SignIn()));
         },
-        next: const Icon(Icons.arrow_forward_ios, color: AppColors.deeppurple),
+        next: const Icon(Icons.arrow_forward_ios, color: AppColors.primary),
         dotsDecorator: getdotdecorator(),
       ),
     );
@@ -61,7 +61,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   DotsDecorator getdotdecorator() => const DotsDecorator(
         size: Size(10.0, 10.0),
-        activeColor: AppColors.lightgreen,
+        activeColor: AppColors.secondary,
         color: Color(0xFFBDBDBD),
         activeSize: Size(42.0, 10.0),
         activeShape: RoundedRectangleBorder(

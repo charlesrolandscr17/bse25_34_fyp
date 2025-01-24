@@ -36,20 +36,21 @@ class _SignInState extends State<SignIn> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: "Email",
-                    labelStyle: const TextStyle(color: AppColors.grey),
+                    labelStyle: const TextStyle(color: AppColors.text),
+                    hintStyle: const TextStyle(color: AppColors.tertiary),
                     hintText: "Enter your Email",
                     prefixIcon: const Icon(
                       Icons.email_outlined,
-                      color: Colors.black,
+                      color: AppColors.icons,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 1, color: Colors.black),
+                          const BorderSide(width: 1, color: AppColors.icons),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          width: 1, color: AppColors.deeppurple),
+                          width: 1, color: AppColors.primary),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     errorBorder: OutlineInputBorder(
@@ -82,20 +83,21 @@ class _SignInState extends State<SignIn> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: "Password",
-                    labelStyle: const TextStyle(color: AppColors.grey),
+                    labelStyle: const TextStyle(color: AppColors.text),
                     hintText: "Enter your Password",
+                    hintStyle: const TextStyle(color: AppColors.tertiary),
                     prefixIcon: const Icon(
                       Icons.lock_open_outlined,
-                      color: Colors.black,
+                      color: AppColors.icons,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 1, color: Colors.black),
+                          const BorderSide(width: 1, color: AppColors.icons),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          width: 1, color: AppColors.deeppurple),
+                          width: 1, color: AppColors.primary),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     errorBorder: OutlineInputBorder(
@@ -130,7 +132,7 @@ class _SignInState extends State<SignIn> {
                   children: [
                     Text(
                       "Forgot password ?",
-                      style: TextStyle(color: AppColors.grey),
+                      style: TextStyle(color: AppColors.tertiary),
                     ),
                   ],
                 ),
@@ -147,10 +149,10 @@ class _SignInState extends State<SignIn> {
                           MaterialPageRoute(
                               builder: (context) => const DashBoard()));
                     },
-                    child: const Text("Sign In"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.deeppurple,
+                      backgroundColor: AppColors.primary,
                     ),
+                    child: const Text("Sign In", style: TextStyle(color: AppColors.text)),
                   ),
                 ),
                 const SizedBox(
@@ -163,7 +165,7 @@ class _SignInState extends State<SignIn> {
                     children: [
                       const Text(
                         "Already have an account? ",
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(color: AppColors.text),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -174,7 +176,7 @@ class _SignInState extends State<SignIn> {
                         },
                         child: const Text(
                           " Sign Up",
-                          style: TextStyle(color: AppColors.deeppurple),
+                          style: TextStyle(color: AppColors.primary),
                         ),
                       ),
                     ],

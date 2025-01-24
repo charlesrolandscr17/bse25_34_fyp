@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const deeppurple = Color(0xFF370D3D);
-  static const lightgreen = Color(0xFF79BAC0);
-  static const grey = Color(0xFF929292);
+  static const primary = Color(0xFFDDA5F5);
+  static const secondary = Color(0xFF79BAC0);
+  static const tertiary = Color(0xFF616161);
+  static const icons = Color(0xFFCCCCCC);
   static const white = Color(0xFFffffff);
   static const lightpurple = Color(0xFFDADBF8);
+  static const text = Color(0xFFFFFFFF);
 }
 
 class MyTheme {

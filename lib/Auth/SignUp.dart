@@ -25,7 +25,7 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(
         title: const Text(
           "Registration",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: AppColors.icons),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -44,11 +44,11 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.deeppurple),
+                      color: AppColors.primary),
                 ),
                 const Text(
                   "Create an account to get all features",
-                  style: TextStyle(color: AppColors.grey),
+                  style: TextStyle(color: AppColors.text),
                 ),
                 const SizedBox(
                   height: 20,
@@ -56,20 +56,21 @@ class _SignUpState extends State<SignUp> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: "Full Name",
-                    labelStyle: const TextStyle(color: AppColors.grey),
+                    labelStyle: const TextStyle(color: AppColors.text),
+                    hintStyle: const TextStyle(color: AppColors.tertiary),
                     hintText: "Enter your Full Name",
                     prefixIcon: const Icon(
                       Icons.person_outline,
-                      color: Colors.black,
+                      color: AppColors.icons,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 1, color: Colors.black),
+                          const BorderSide(width: 1, color: AppColors.icons),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          width: 1, color: AppColors.deeppurple),
+                          width: 1, color: AppColors.primary),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     errorBorder: OutlineInputBorder(
@@ -102,20 +103,21 @@ class _SignUpState extends State<SignUp> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: "Email",
-                    labelStyle: const TextStyle(color: AppColors.grey),
+                    labelStyle: const TextStyle(color: AppColors.text),
+                    hintStyle: const TextStyle(color: AppColors.tertiary),
                     hintText: "Enter your Email",
                     prefixIcon: const Icon(
                       Icons.email_outlined,
-                      color: Colors.black,
+                      color: AppColors.icons,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 1, color: Colors.black),
+                          const BorderSide(width: 1, color: AppColors.icons),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          width: 1, color: AppColors.deeppurple),
+                          width: 1, color: AppColors.primary),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     errorBorder: OutlineInputBorder(
@@ -148,20 +150,21 @@ class _SignUpState extends State<SignUp> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: "Password",
-                    labelStyle: const TextStyle(color: AppColors.grey),
+                    labelStyle: const TextStyle(color: AppColors.text),
+                    hintStyle: const TextStyle(color: AppColors.tertiary),
                     hintText: "Enter your Password",
                     prefixIcon: const Icon(
                       Icons.lock_open_outlined,
-                      color: Colors.black,
+                      color: AppColors.icons,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 1, color: Colors.black),
+                          const BorderSide(width: 1, color: AppColors.icons),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          width: 1, color: AppColors.deeppurple),
+                          width: 1, color: AppColors.primary),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     errorBorder: OutlineInputBorder(
@@ -194,20 +197,21 @@ class _SignUpState extends State<SignUp> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: "Confirm Password",
-                    labelStyle: const TextStyle(color: AppColors.grey),
+                    labelStyle: const TextStyle(color: AppColors.text),
+                    hintStyle: const TextStyle(color: AppColors.tertiary),
                     hintText: "Re-enter Your password",
                     prefixIcon: const Icon(
                       Icons.lock_open_outlined,
-                      color: Colors.black,
+                      color: AppColors.icons,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 1, color: Colors.black),
+                          const BorderSide(width: 1, color: AppColors.icons),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          width: 1, color: AppColors.deeppurple),
+                          width: 1, color: AppColors.primary),
                       borderRadius: BorderRadius.circular(18),
                     ),
                     errorBorder: OutlineInputBorder(
@@ -259,9 +263,9 @@ class _SignUpState extends State<SignUp> {
                   child: ElevatedButton(
                     onPressed: agree ? _doSomething : null,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.deeppurple,
+                      backgroundColor: AppColors.primary,
                     ),
-                    child: const Text("Sign Up"),
+                    child: const Text("Sign Up", style: TextStyle(color: AppColors.text)),
                   ),
                 ),
                 const SizedBox(
@@ -274,7 +278,7 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       const Text(
                         "Already have an account? ",
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(color: AppColors.text)
                       ),
                       GestureDetector(
                         onTap: () {
@@ -285,7 +289,7 @@ class _SignUpState extends State<SignUp> {
                         },
                         child: const Text(
                           " Sign In",
-                          style: TextStyle(color: AppColors.deeppurple),
+                          style: TextStyle(color: AppColors.primary),
                         ),
                       ),
                     ],

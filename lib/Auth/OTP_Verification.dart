@@ -38,7 +38,7 @@ class _OTP_VerificationState extends State<OTP_Verification> {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.lightgreen),
+                      color: AppColors.secondary),
                 ),
                 const SizedBox(
                   height: 20,
@@ -196,7 +196,7 @@ class _OTP_VerificationState extends State<OTP_Verification> {
                               builder: (context) => const DashBoard()));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.deeppurple,
+                      backgroundColor: AppColors.primary,
                     ),
                     child: const Text("Submit"),
                   ),
@@ -221,7 +221,7 @@ class _OTP_VerificationState extends State<OTP_Verification> {
                 const Text(
                   "Re-Send",
                   style: TextStyle(
-                      color: AppColors.deeppurple, fontWeight: FontWeight.w500),
+                      color: AppColors.primary, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
