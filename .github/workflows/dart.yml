@@ -23,6 +23,12 @@ jobs:
           distribution: 'oracle'
           java-version: '17'
 
+      # Step 2: Set up Java
+      - name: Set Up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '^3.5.4'
+
       # Step 3: Set up Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
