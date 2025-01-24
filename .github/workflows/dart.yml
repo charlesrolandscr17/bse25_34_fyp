@@ -1,0 +1,56 @@
+name: Flutter Test and Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  flutter-test-build:
+    name: Test and Build Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Java
+      - name: Set Up Java
+        uses: actions/setup-java@v3.12.0
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+
+      # Step 2: Set up Java
+      - name: Set Up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.6.0'
+
+      # Step 3: Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.3'
+          channel: stable
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: flutter test
+
+      # Step 6: Build the release APK
+      - name: Build release APK
+        run: flutter build apk --release
+
+      # Step 7: Upload the APK as an artifact
+      - name: Upload release APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
