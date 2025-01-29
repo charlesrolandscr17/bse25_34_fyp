@@ -39,13 +39,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     const SizedBox(width: 15),
-                    const Icon(Icons.search),
-                    const SizedBox(width: 15),
-                    const Text(
-                      "Search Jobs..",
-                      style: TextStyle(color: Colors.grey),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.search,
+                              color: AppColors.deeppurple),
+                          hintText: "Search Jobs...",
+                          hintStyle: const TextStyle(color: Colors.deepPurple),
+                          filled: true,
+                          fillColor: Colors.deepPurple[50],
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 10),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                        onChanged: (value) {
+                          // Handle search logic here
+                          print("Searching for: $value");
+                        },
+                      ),
                     ),
-                    const Spacer(),
+                    const SizedBox(width: 10),
                     Container(
                       height: 50,
                       width: 50,
