@@ -1,3 +1,5 @@
+import 'package:bse25_34_fyp/Screens/Dashboard.dart';
+import 'package:bse25_34_fyp/Screens/Fragments/JobsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bse25_34_fyp/Theme.dart';
 
@@ -24,6 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
     {"title": "Painting Gig", "subtitle": "Makerere, Kavule", "price": "15000"},
     {"title": "Data Analyst", "subtitle": "Kikumi Kikumi", "price": "20000"},
   ];
+
+  _navigateJobs() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const DashBoard()), //route to the jobs
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,22 +92,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 35),
-              const Row(
+              Row(
                 children: [
-                  Text(
+                  const Text(
                     "Recommended for you",
                     style: TextStyle(
                         color: AppColors.deeppurple,
                         fontSize: 18,
                         fontWeight: FontWeight.w600),
                   ),
-                  Spacer(),
-                  Text(
-                    "More",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500),
+                  const Spacer(),
+                  SizedBox(
+                    child: TextButton(
+                      onPressed: () {
+                        _navigateJobs();
+                      },
+                      child: const Text(
+                        "More",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
                 ],
               ),

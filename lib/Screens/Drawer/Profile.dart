@@ -10,6 +10,13 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Wafula Ian Elmer',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
   }
 }

@@ -66,8 +66,8 @@ flutter:
   assets:
     - assets/Icons/
     - assets/Images/
-    - assets/Images/profile.png
-    - assets/Icons/Ic_Bookmark.png
+    # - assets/Images/profile.png
+    # - assets/Icons/Ic_Bookmark.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

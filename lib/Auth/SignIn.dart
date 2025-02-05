@@ -212,7 +212,7 @@ class _SignInState extends State<SignIn> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Already have an account? ",
+                          "Don't have an account yet? ",
                           style: TextStyle(color: Colors.grey),
                         ),
                         GestureDetector(
